@@ -1,10 +1,11 @@
 var readlineSync = require('readline-sync');
+var ansiColors = require("ansi-colors");
 
 var userName = readlineSync.question('May I have your name?');
 // console.log(userName);
 
 function welcome(){
-  var welcomeMessage = "Welcome! " + userName + ' to Do you know Sourabh?';
+  var welcomeMessage = ansiColors.greenBright("\n Welcome! " + userName + ' to Do YOU kNOW Sourabh?');
 console.log(welcomeMessage);
 }
 
@@ -14,23 +15,23 @@ function playTheGame(question,answer){
   var userAnswer = readlineSync.question(question);
 
   if(userAnswer === answer){
-    console.log('Yay! your answer is correct.');
+    console.log(ansiColors.green(' \n Yay! your answer is correct.'));
     score++;
   }
   else{
-    console.log("Oops! your answer is wrong.");
+    console.log(ansiColors.red(" \n Oops! your answer is wrong."));
     score = score;
   }
-    console.log('Your score is: '+score);
+    console.log(' \n Your score is: ' + score);
     console.log('------------------')
 }
 
 var questions = [{
-  question: 'Is sourabh is the only child ?',
+  question: ' \n Is sourabh is the only child ?',
   answer: 'no'
   },
   {
-  question: ' At which school did sourabh completed his 10th standard?',
+  question: 'At which school did sourabh completed his 10th standard?',
   answer: 'central academy'
   },
   {
@@ -54,7 +55,7 @@ function game(){
 }
 
 function showScores(){
-  console.log('Yay! you scored: ' + score);
+  console.log(ansiColors.bgYellow('Yay! your final score is:') +  ansiColors.cyan(score));
 }
 
 welcome();
